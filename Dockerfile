@@ -48,6 +48,9 @@ COPY --from=builder /tmp/artifacts /
 # -D disables password
 # -g '' specifies empty user information
 RUN adduser -D -g '' -h /rtorrent rtorrent
+RUN mkdir /rtorrent/.rtorrent.session
+RUN mkdir /rtorrent/downloaded
+RUN chown -R rtorrent:0 /rtorrent
 
 # Switch to user context.
 USER rtorrent
